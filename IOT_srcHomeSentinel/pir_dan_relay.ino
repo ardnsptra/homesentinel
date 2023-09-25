@@ -43,7 +43,7 @@ if ((data == HIGH) && (statusPIR == LOW)) { // cek jika ada pergerakan
          statusPIR = HIGH; //diset high spy tdk mendeteksi terus
          
          digitalWrite(RELAY_1, RELAY_ON);
-         delay(1000);
+         delay(100);
          digitalWrite(RELAY_1, RELAY_OFF);
          delay(500);
          
