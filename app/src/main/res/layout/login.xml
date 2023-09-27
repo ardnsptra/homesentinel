@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgorund">
 
     <ImageView
@@ -10,7 +12,8 @@
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:layout_alignParentTop="true"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/l_btBack"
@@ -18,7 +21,8 @@
         android:layout_height="40dp"
         android:src="@drawable/backarrow"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"/>
+        android:layout_marginStart="20dp"
+        tools:ignore="ContentDescription"/>
 
     <TextView
         android:id="@+id/r_title1"
@@ -30,7 +34,8 @@
         android:textSize="20sp"
         android:fontFamily="@font/poppinsbold"
         android:textColor="@color/black"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/r_gambar2"
@@ -41,7 +46,8 @@
         android:layout_centerHorizontal="true"
         android:maxWidth="200dp"
         android:maxHeight="200dp"
-        android:adjustViewBounds="true"/>
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no" />
 
 
     <LinearLayout
@@ -52,30 +58,47 @@
         android:layout_below="@id/r_gambar2"
         android:padding="30dp">
 
-        <EditText
-            android:id="@+id/l_email"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l_email_layout"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/tombol_shape"
+            android:layout_height="wrap_content"
             android:hint="Email"
-            android:padding="10dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="15sp"/>
+            android:layout_marginTop="12dp"
+            tools:ignore="HardcodedText">
 
-        <EditText
-            android:id="@+id/l_password"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/l_email"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/tombol_shape"
+                android:padding="10dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="15sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/l_password_layout"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/tombol_shape"
+            android:layout_height="wrap_content"
             android:hint="Password"
             android:layout_marginTop="12dp"
-            android:padding="10dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="15sp"/>
+            app:passwordToggleEnabled="true"
+            tools:ignore="HardcodedText">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/l_password"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/tombol_shape"
+                android:padding="10dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="15sp"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+
 
     <TextView
         android:id="@+id/l_forget"
@@ -85,7 +108,8 @@
         android:text="Forget Password?"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
-        android:fontFamily="@font/poppinssemibold"/>
+        android:fontFamily="@font/poppinssemibold"
+        tools:ignore="HardcodedText"/>
 
     <Button
         android:id="@+id/l_btlogin"
@@ -99,7 +123,8 @@
         android:fontFamily="@font/poppinsbold"
         android:text="Login"
         android:textSize="16sp"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -115,7 +140,8 @@
         android:text="Not have an account?"
         android:fontFamily="@font/poppinsregular"
         android:textColor="@color/black"
-        android:textSize="13sp"/>
+        android:textSize="13sp"
+        tools:ignore="HardcodedText"/>
 
     <TextView
         android:id="@+id/l_txtRegister"
@@ -124,7 +150,8 @@
         android:text=" Register"
         android:fontFamily="@font/poppinssemibold"
         android:textColor="@color/black"
-        android:textSize="13sp"/>
+        android:textSize="13sp"
+        tools:ignore="HardcodedText"/>
 
     </LinearLayout>
 </RelativeLayout>
