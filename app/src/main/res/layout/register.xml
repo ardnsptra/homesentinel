@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgorund">
 
     <ImageView
@@ -41,50 +42,68 @@
         android:layout_below="@id/r_title1"
         android:padding="30dp">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/r_name_layout"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/tombol_shape"
+            android:layout_height="wrap_content"
             android:hint="Name"
-            android:padding="10dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="15sp"/>
+            app:hintTextAppearance="@style/TextLabel">
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/r_name"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/tombol_shape"
+                android:padding="10dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="15sp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/r_email_layout"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/tombol_shape"
+            android:layout_height="wrap_content"
             android:hint="Email"
             android:layout_marginTop="12dp"
-            android:padding="10dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="15sp"/>
+            app:hintTextAppearance="@style/TextLabel">
 
-        <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/r_email"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/tombol_shape"
+                android:padding="10dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="15sp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/r_password_layout"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/tombol_shape"
+            android:layout_height="wrap_content"
             android:hint="Password"
             android:layout_marginTop="12dp"
-            android:padding="10dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="15sp"/>
+            app:hintTextAppearance="@style/TextLabel"
+            app:passwordToggleEnabled="true">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:background="@drawable/tombol_shape"
-            android:hint="Confirm Password"
-            android:layout_marginTop="12dp"
-            android:padding="10dp"
-            android:backgroundTint="@color/white"
-            android:fontFamily="@font/poppinsregular"
-            android:textSize="15sp"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/r_password"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/tombol_shape"
+                android:padding="10dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppinsregular"
+                android:textSize="15sp"
+                />
 
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
+
 
     <Button
         android:id="@+id/r_btRegister"
@@ -92,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ly1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:width="350dp"
         android:background="@drawable/tombol_shape"
         android:fontFamily="@font/poppinsbold"

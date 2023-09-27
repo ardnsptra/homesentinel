@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.HomeSentinel" parent="Base.Theme.HomeSentinel" />
+
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <!-- Atur atribut lain yang sesuai -->
+    </style>
 </resources>

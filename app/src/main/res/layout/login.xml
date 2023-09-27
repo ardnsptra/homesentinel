@@ -53,6 +53,7 @@
         android:padding="30dp">
 
         <EditText
+            android:id="@+id/l_email"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/tombol_shape"
@@ -63,6 +64,7 @@
             android:textSize="15sp"/>
 
         <EditText
+            android:id="@+id/l_password"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:background="@drawable/tombol_shape"
