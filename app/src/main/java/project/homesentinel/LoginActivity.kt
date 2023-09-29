@@ -39,7 +39,7 @@ class LoginActivity: AppCompatActivity() {
                     if(it.isSuccessful){
                         startActivity(Intent(this, MenuActivity::class.java))
                     }else{
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Data Tidak Ditemukan", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

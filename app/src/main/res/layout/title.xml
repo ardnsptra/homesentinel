@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgorund">
@@ -10,7 +11,8 @@
         android:layout_height="30dp"
         android:layout_marginTop="50dp"
         android:layout_alignParentTop="true"
-        android:src="@drawable/logohitam"/>
+        android:src="@drawable/logohitam"
+        android:importantForAccessibility="no" />
 
     <ImageView
         android:id="@+id/gambar2"
@@ -22,7 +24,8 @@
         android:layout_centerHorizontal="true"
         android:maxHeight="200dp"
         android:maxWidth="200dp"
-        android:adjustViewBounds="true"/>
+        android:adjustViewBounds="true"
+        android:importantForAccessibility="no" />
 
     <TextView
         android:id="@+id/title1"
@@ -34,7 +37,8 @@
         android:fontFamily="@font/poppinssemibold"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/txt1"
@@ -46,7 +50,8 @@
         android:gravity="center"
         android:text="We're here to keep your home safe and secure."
         android:textColor="@color/black"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/btlogin"
@@ -60,7 +65,8 @@
         android:text="Login"
         android:textSize="16sp"
         android:fontFamily="@font/poppinsbold"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/btResgiter"
@@ -75,6 +81,7 @@
         android:fontFamily="@font/poppinsbold"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>

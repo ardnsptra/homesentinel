@@ -51,7 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
-            tools:ignore="HardcodedText">
+            tools:ignore="HardcodedText"
+            app:startIconDrawable="@drawable/people">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/r_name"
@@ -71,7 +72,8 @@
             android:layout_height="wrap_content"
             android:hint="Email"
             android:layout_marginTop="12dp"
-            tools:ignore="HardcodedText">
+            tools:ignore="HardcodedText"
+            app:startIconDrawable="@drawable/mail">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/r_email"
@@ -92,7 +94,9 @@
             android:hint="Password"
             android:layout_marginTop="12dp"
             app:passwordToggleEnabled="true"
-            tools:ignore="HardcodedText">
+            tools:ignore="HardcodedText"
+            app:helperText="at least 6 characters"
+            app:startIconDrawable="@drawable/lock">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/r_password"
