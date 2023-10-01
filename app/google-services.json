@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "382165428425",
+    "project_id": "homesentinel-f0358",
+    "storage_bucket": "homesentinel-f0358.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382165428425:android:ba6f51593336f916034518",
+        "android_client_info": {
+          "package_name": "project.homesentinel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZQLmBc21k5Iz76O9BO2hAMl7junU9f8k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
