@@ -33,13 +33,24 @@ class LoginActivity: AppCompatActivity() {
             val password = binding.lPassword.text.toString()
 
             if (email.isEmpty() || password.isEmpty()){
-                Toast.makeText(this, "Data Tidak Boleh Kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Data cannot be empty", Toast.LENGTH_SHORT).show()
+                if (email.isEmpty()){
+                    binding.lEmail.error = "Cannot be empty"
+                    binding.lEmail.requestFocus()
+                    return@setOnClickListener
+                }
+                if (password.isEmpty()){
+                    binding.lPassword.error = "Cannot be empty"
+                    binding.lPassword.requestFocus()
+                    return@setOnClickListener
+                }
             }else{
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(){
                     if(it.isSuccessful){
+                        Toast.makeText(this, "Success Login", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this, MenuActivity::class.java))
                     }else{
-                        Toast.makeText(this, "Data Tidak Ditemukan", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Data Not Found", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

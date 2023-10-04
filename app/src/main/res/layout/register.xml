@@ -55,7 +55,7 @@
             app:startIconDrawable="@drawable/people">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/r_name"
+                android:id="@+id/rName"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/tombol_shape"
@@ -76,7 +76,7 @@
             app:startIconDrawable="@drawable/mail">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/r_email"
+                android:id="@+id/rEmail"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/tombol_shape"
@@ -99,7 +99,7 @@
             app:startIconDrawable="@drawable/lock">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/r_password"
+                android:id="@+id/rPassword"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/tombol_shape"

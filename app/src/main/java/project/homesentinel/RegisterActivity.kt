@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth
 import project.homesentinel.databinding.RegisterBinding
 import android.widget.Toast
 import android.os.Handler
+import android.util.Patterns
 
 @Suppress("DEPRECATION")
 class RegisterActivity: AppCompatActivity() {
@@ -36,10 +37,32 @@ class RegisterActivity: AppCompatActivity() {
             val email = binding.rEmail.text.toString()
             val password = binding.rPassword.text.toString()
 
+            //cek email valid apa kaga
+            if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                binding.rEmail.error = "Email Not Valid"
+                binding.rEmail.requestFocus()
+                return@setOnClickListener
+            }
 
             //ngecek apakah ada data
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()){
                 Toast.makeText(this, "Data cannot be empty", Toast.LENGTH_SHORT).show()
+                if (name.isEmpty()){
+                    binding.rName.error = "Cannot be empty"
+                    binding.rName.requestFocus()
+                    return@setOnClickListener
+                }
+                if (email.isEmpty()){
+                    binding.rEmail.error = "Cannot be empty"
+                    binding.rEmail.requestFocus()
+                    return@setOnClickListener
+                }
+                if (password.isEmpty()){
+                    binding.rPassword.error = "Cannot be empty"
+                    binding.rPassword.requestFocus()
+                    return@setOnClickListener
+                }
+
             }else{
                 auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(){
                     if(it.isSuccessful){
