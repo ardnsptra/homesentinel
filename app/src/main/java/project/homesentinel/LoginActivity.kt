@@ -5,12 +5,20 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import project.homesentinel.databinding.LoginBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+
 
 class LoginActivity: AppCompatActivity() {
 
     lateinit var binding: LoginBinding
     lateinit var auth : FirebaseAuth
+    lateinit var database : DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = LoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -29,14 +37,14 @@ class LoginActivity: AppCompatActivity() {
 
         //tombol login
         binding.lBtlogin.setOnClickListener(){
-            val email = binding.lEmail.text.toString()
+            val name = binding.lName.text.toString()
             val password = binding.lPassword.text.toString()
 
-            if (email.isEmpty() || password.isEmpty()){
+            if (name.isEmpty() || password.isEmpty()){
                 Toast.makeText(this, "Data cannot be empty", Toast.LENGTH_SHORT).show()
-                if (email.isEmpty()){
-                    binding.lEmail.error = "Cannot be empty"
-                    binding.lEmail.requestFocus()
+                if (name.isEmpty()){
+                    binding.lName.error = "Cannot be empty"
+                    binding.lName.requestFocus()
                     return@setOnClickListener
                 }
                 if (password.isEmpty()){
@@ -45,14 +53,31 @@ class LoginActivity: AppCompatActivity() {
                     return@setOnClickListener
                 }
             }else{
-                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(){
-                    if(it.isSuccessful){
-                        Toast.makeText(this, "Success Login", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, MenuActivity::class.java))
-                    }else{
-                        Toast.makeText(this, "Data Not Found", Toast.LENGTH_SHORT).show()
+                database = FirebaseDatabase.getInstance().getReference("users")
+                database.addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        if (dataSnapshot.child(name).exists()) {
+                            if (dataSnapshot.child(name).child("password").getValue(String::class.java) == password){
+                                Toast.makeText(applicationContext, "Success Login", Toast.LENGTH_SHORT).show()
+                                startActivity(Intent(applicationContext, MenuActivity::class.java))
+                                return
+                            }
+                        }
                     }
-                }
+
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        Toast.makeText(applicationContext, "Data Not Found", Toast.LENGTH_SHORT).show()
+                    }
+                })
+
+//                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+//                    if (task.isSuccessful) {
+//                        Toast.makeText(this, "Success Login", Toast.LENGTH_SHORT).show()
+//                        startActivity(Intent(this, MenuActivity::class.java))
+//                    }else{
+//                        Toast.makeText(this, "Data Not Found", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
             }
         }
 

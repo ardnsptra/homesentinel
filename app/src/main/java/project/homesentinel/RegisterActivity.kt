@@ -8,18 +8,22 @@ import project.homesentinel.databinding.RegisterBinding
 import android.widget.Toast
 import android.os.Handler
 import android.util.Patterns
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 @Suppress("DEPRECATION")
 class RegisterActivity: AppCompatActivity() {
 
-    lateinit var binding : RegisterBinding
-    lateinit var auth : FirebaseAuth
+    private lateinit var binding : RegisterBinding
+    private lateinit var auth : FirebaseAuth
+    private lateinit var database : DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = RegisterBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://homesentinel-f0358-default-rtdb.firebaseio.com/")
 
         //text login di login (dibagian pling bawah)
         binding.rTxtLogin.setOnClickListener(){
@@ -64,17 +68,28 @@ class RegisterActivity: AppCompatActivity() {
                 }
 
             }else{
-                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(){
-                    if(it.isSuccessful){
-                        Toast.makeText(this, "Success Register", Toast.LENGTH_SHORT).show()
+                database = FirebaseDatabase.getInstance().getReference("users")
+                database.child(name).child("username").setValue(name)
+                database.child(name).child("email").setValue(email)
+                database.child(name).child("password").setValue(password)
+                Toast.makeText(this, "Success Register", Toast.LENGTH_SHORT).show()
 
                         Handler().postDelayed({
                             startActivity(Intent(this, LoginActivity::class.java))
                         }, 2000)
-                    }else{
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-                    }
-                }
+
+//                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+//                    if (task.isSuccessful) {
+//                        val name = auth.currentUser
+//                        Toast.makeText(this, "Success Register", Toast.LENGTH_SHORT).show()
+//
+//                        Handler().postDelayed({
+//                            startActivity(Intent(this, LoginActivity::class.java))
+//                        }, 2000)
+//                    }else{
+//                        Toast.makeText(this, "Failed Register", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
             }
         }
     }

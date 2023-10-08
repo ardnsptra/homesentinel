@@ -62,13 +62,13 @@
             android:id="@+id/l_email_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Username"
             android:layout_marginTop="12dp"
             tools:ignore="HardcodedText"
             app:startIconDrawable="@drawable/mail">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/lEmail"
+                android:id="@+id/lName"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:background="@drawable/tombol_shape"

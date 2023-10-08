@@ -13,9 +13,8 @@
             android:title="Home"
             tools:ignore="HardcodedText" />
 
-
         <item
-            android:id="@+id/nav_share"
+            android:id="@+id/nav_notif"
             android:icon="@drawable/notif"
             android:title="Notification"
             tools:ignore="HardcodedText" />

@@ -50,7 +50,7 @@
             android:id="@+id/r_name_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
+            android:hint="Username"
             tools:ignore="HardcodedText"
             app:startIconDrawable="@drawable/people">
 

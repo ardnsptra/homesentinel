@@ -5,14 +5,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@drawable/bg_grey"
-    android:gravity="top"
+    android:background="@drawable/bg_test"
+    android:gravity="bottom"
     android:padding="20dp">
 
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:src="@drawable/people"
+        android:src="@drawable/logo"
         app:tint="@color/white"
         android:layout_marginTop="50dp"
         android:importantForAccessibility="no" />
