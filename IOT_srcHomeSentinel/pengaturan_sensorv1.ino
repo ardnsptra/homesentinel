@@ -10,8 +10,8 @@ bool motionDetected = false; // Variabel untuk melacak deteksi gerakan
 
 SoftwareSerial espSerial(2, 3); // RX, TX (sesuaikan pinnya)
 
-#define FIREBASE_HOST "your-firebase-url.firebaseio.com" // Ganti dengan URL Firebase Anda
-#define FIREBASE_AUTH "your-firebase-auth-key" // Ganti dengan kunci otentikasi Firebase Anda
+#define FIREBASE_HOST "https://homesentinel-f0358-default-rtdb.firebaseio.com/" // Ganti dengan URL Firebase Anda
+#define FIREBASE_AUTH "AIzaSyCXSQqn1Ir2rpd5pW13qp1nFNIWluDQBPg" // Ganti dengan kunci otentikasi Firebase Anda
 
 void setup() {
   pinMode(buzz, OUTPUT); // Mengatur pin buzzer sebagai OUTPUT
