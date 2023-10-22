@@ -1,75 +1,78 @@
-#define IR_sensor1Pin A1 
-#define IR_sensor2Pin A2 
+#define IR_sensorPin 2
 
-int trigger_pin = 2;
-int echo_pin = 3;
- 
-int IR_sensor1_Value;
-int IR_sensor2_Value;
-int time;
-int distance; 
+int IR_sensor_Value;
+int ledPin = 13;            // choose the pin for the LED
+int pinSpeaker = 10;        // Set up a speaker on a PWM pin (digital 9, 10, or 11)
+int pirState = LOW;         // We start, assuming no motion detected
+int val = 0;                // Variable for reading the pin status
 String values;
 
- void setup() { 
-  
- pinMode (trigger_pin, OUTPUT); 
- 
- pinMode (echo_pin, INPUT);
- 
- //Initializes the serial connection at 9600 to sent sensor data to ESP8266.
- Serial.begin(9600); 
- 
-delay(2000);  
-  
- }
+void setup() {
+  pinMode(ledPin, OUTPUT);      // Declare LED as output
+  pinMode(IR_sensorPin, INPUT); // Declare sensor as input
+  pinMode(pinSpeaker, OUTPUT);
 
- 
+  // Initializes the serial connection at 9600 to send sensor data to ESP8266.
+  Serial.begin(9600);
+  delay(2000);
+}
+
 void loop() {
+  // Get sensor data and put it into the 'values' variable as a string.
+  values = get_IR_sensor_Value();
+  delay(1000);
 
-  // get sensors data and put in to values variables as a string.
-   values= (get_distance_Value()+','+get_IR_sensor1_Value()+','+get_IR_sensor2_Value());
-       delay(1000);
-       // removed any buffered previous serial data.
-       Serial.flush();
-       delay(1000);
-       // sent sensors data to serial (sent sensors data to ESP8266)
-       Serial.print(values);
-       delay(2000);
- 
+  // Remove any buffered previous serial data.
+  Serial.flush();
+  delay(1000);
 
+  // Send sensor data to serial (send sensor data to ESP8266).
+  Serial.print(values);
+  delay(2000);
+
+  val = digitalRead(IR_sensorPin); // Read input value
+  if (val == HIGH) {              // Check if the input is HIGH
+    digitalWrite(ledPin, HIGH);   // Turn LED ON
+    playTone(300, 160);
+    delay(150);
+
+    if (pirState == LOW) {
+      // We have just turned on
+      Serial.println("Motion detected!");
+      // We only want to print on the output change, not state
+      pirState = HIGH;
+    }
+  } else {
+    digitalWrite(ledPin, LOW); // Turn LED OFF
+    playTone(0, 0);
+    delay(300);
+
+    if (pirState == HIGH) {
+      // We have just turned off
+      Serial.println("Motion ended!");
+      // We only want to print on the output change, not state
+      pirState = LOW;
+    }
+  }
 }
 
-// get Ultrasonic sensor data
-String get_distance_Value(){  
- 
- 
-    digitalWrite (trigger_pin, HIGH);
-
-    delayMicroseconds (10);
-
-    digitalWrite (trigger_pin, LOW);
-
-    time = pulseIn (echo_pin, HIGH);
-
-    distance = (time * 0.034) / 2;
-      return String(distance);  
+// Duration in mSecs, frequency in hertz
+void playTone(long duration, int freq) {
+  duration *= 1000;
+  int period = (1.0 / freq) * 1000000;
+  long elapsed_time = 0;
+  while (elapsed_time < duration) {
+    digitalWrite(pinSpeaker, HIGH);
+    delayMicroseconds(period / 2);
+    digitalWrite(pinSpeaker, LOW);
+    delayMicroseconds(period / 2);
+    elapsed_time += period;
+  }
 }
 
-// get IR sensor 1 data
-String get_IR_sensor1_Value(){ 
-   
-IR_sensor1_Value =analogRead(IR_sensor1Pin);
-    delay(1000);
-    return String(IR_sensor1_Value);  
-    
+// Get IR sensor data
+String get_IR_sensor_Value() {
+  IR_sensor_Value = analogRead(IR_sensorPin);
+  delay(1000);
+  return String(IR_sensor_Value);
 }
-
-// get IR sensor 2 data
-String get_IR_sensor2_Value(){ 
-   
-IR_sensor2_Value =analogRead(IR_sensor2Pin);
-delay(1000);
-    return String(IR_sensor2_Value);  
-}
- 
-  
