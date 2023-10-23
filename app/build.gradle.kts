@@ -6,13 +6,12 @@ plugins {
 
 android {
     namespace = "project.homesentinel"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "project.homesentinel"
         minSdk = 28
-        //noinspection OldTargetApi
-        targetSdk = 32
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -50,6 +49,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.4")
     implementation("com.google.firebase:firebase-auth:22.1.2")
     implementation("com.google.firebase:firebase-database:20.2.2")
+    implementation("com.google.firebase:firebase-messaging:23.2.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

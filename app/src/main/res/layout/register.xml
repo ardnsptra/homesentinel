@@ -73,7 +73,8 @@
             android:hint="Email"
             android:layout_marginTop="12dp"
             tools:ignore="HardcodedText"
-            app:startIconDrawable="@drawable/mail">
+            app:startIconDrawable="@drawable/mail"
+            app:helperText="email must be active">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/rEmail"
@@ -92,7 +93,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
-            android:layout_marginTop="12dp"
             app:passwordToggleEnabled="true"
             tools:ignore="HardcodedText"
             app:helperText="at least 6 characters"

@@ -1,6 +1,8 @@
 package project.homesentinel
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,7 @@ class LoginActivity: AppCompatActivity() {
     lateinit var binding: LoginBinding
     lateinit var auth : FirebaseAuth
     lateinit var database : DatabaseReference
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = LoginBinding.inflate(layoutInflater)
@@ -25,6 +28,7 @@ class LoginActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
         //tombol back di login (bagian kiri atas)
         binding.lBtBack.setOnClickListener(){
@@ -59,7 +63,17 @@ class LoginActivity: AppCompatActivity() {
                         if (dataSnapshot.child(name).exists()) {
                             if (dataSnapshot.child(name).child("password").getValue(String::class.java) == password){
                                 Toast.makeText(applicationContext, "Success Login", Toast.LENGTH_SHORT).show()
-                                startActivity(Intent(applicationContext, MenuActivity::class.java))
+                                // Kirim data ke MenuActivity
+                                val username = dataSnapshot.child(name).child("username").getValue(String::class.java)
+                                val email = dataSnapshot.child(name).child("email").getValue(String::class.java)
+                                val intent = Intent(applicationContext, MenuActivity::class.java)
+                                // Setelah pengguna berhasil login, Anda dapat menyimpan nama pengguna ke SharedPreferences.
+                                val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+                                sharedPreferences.edit().putString("username", name).apply()
+                                //mwnyimPn username dan email
+                                intent.putExtra("username", username)
+                                intent.putExtra("email", email)
+                                startActivity(intent)
                                 return
                             }
                         }
@@ -69,15 +83,6 @@ class LoginActivity: AppCompatActivity() {
                         Toast.makeText(applicationContext, "Data Not Found", Toast.LENGTH_SHORT).show()
                     }
                 })
-
-//                auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-//                    if (task.isSuccessful) {
-//                        Toast.makeText(this, "Success Login", Toast.LENGTH_SHORT).show()
-//                        startActivity(Intent(this, MenuActivity::class.java))
-//                    }else{
-//                        Toast.makeText(this, "Data Not Found", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
             }
         }
 

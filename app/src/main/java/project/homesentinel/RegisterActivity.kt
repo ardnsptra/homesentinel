@@ -78,18 +78,6 @@ class RegisterActivity: AppCompatActivity() {
                             startActivity(Intent(this, LoginActivity::class.java))
                         }, 2000)
 
-//                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-//                    if (task.isSuccessful) {
-//                        val name = auth.currentUser
-//                        Toast.makeText(this, "Success Register", Toast.LENGTH_SHORT).show()
-//
-//                        Handler().postDelayed({
-//                            startActivity(Intent(this, LoginActivity::class.java))
-//                        }, 2000)
-//                    }else{
-//                        Toast.makeText(this, "Failed Register", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
             }
         }
     }

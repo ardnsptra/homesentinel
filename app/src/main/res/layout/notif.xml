@@ -1,16 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgorund"
     tools:context=".NotifActivity">
 
+    <ImageView
+        android:id="@+id/btBackNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:src="@drawable/backarrow"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        tools:ignore="ContentDescription"/>
+
     <TextView
+        android:id="@+id/teksnotif"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="NOTIFICATION"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppinsbold"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notificationRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="NOTIFICATION"
-        android:textSize="30sp"
-        android:gravity="center"
+        android:layout_below="@id/teksnotif"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/btNotifOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/teksnotif"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="536dp"
+        android:width="100dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Test Notif ON"
+        android:textColor="@color/black"
+        android:textSize="10sp"
         tools:ignore="HardcodedText" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btNotifOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btNotifOn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:width="100dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Test Notif OFF"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        tools:ignore="HardcodedText" />
+
+</RelativeLayout>
