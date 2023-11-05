@@ -41,10 +41,8 @@ void loop() {
     // Get sensor data from values variable by splitting it by commas and store in variables
     String IR_sensor_value = values.substring(0, firstCommaIndex);
 
-    // Store IR sensor 1 data as a string in Firebase
+    // Store IR sensor  data as a string in Firebase
     Firebase.setString("IR_sensor_value", IR_sensor_value);
-    delay(10);
-
     delay(10);
 
     // Store previous sensors data as a string in Firebase
