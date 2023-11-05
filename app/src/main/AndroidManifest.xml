@@ -20,9 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HomeSentinel"
         tools:targetApi="31">
-        <activity
-            android:name=".NotifActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".NotifActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".MenuActivity"
             android:exported="false" />

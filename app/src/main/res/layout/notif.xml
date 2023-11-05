@@ -28,11 +28,12 @@
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/notificationRecyclerView"
+        android:id="@+id/historyNotif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/teksnotif"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="150dp"/>
 
     <Button
         android:id="@+id/btNotifOn"

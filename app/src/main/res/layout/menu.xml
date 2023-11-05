@@ -41,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/toolbar">
 
                 <LinearLayout
@@ -51,16 +52,16 @@
                     <ImageView
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/profilephoto"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginTop="20dp" />
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/profilephoto" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_marginStart="10sp"
-                        android:layout_marginTop="30dp">
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/welcomename"
@@ -68,8 +69,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsbold"
                             android:text="welcome"
-                            android:textSize="20sp"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
 
                         <TextView
                             android:id="@+id/emailWelcome"
@@ -77,16 +78,50 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:text="email"
-                            android:textSize="12sp"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/teksnotif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="NOTIFICATION"
+                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinsbold"
+                    tools:ignore="HardcodedText,MissingConstraints" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/historyNotif"
+                    android:layout_width="match_parent"
+                    android:layout_height="437dp"/>
+
+                <Button
+                    android:id="@+id/btNotifOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="Test Notif ON"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+
+                <Button
+                    android:id="@+id/btNotifOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppinsbold"
+                    android:text="Test Notif OFF"
+                    android:textColor="@color/black"
+                    android:textSize="10sp" />
+
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     </ScrollView>
 

@@ -67,12 +67,11 @@ class LoginActivity: AppCompatActivity() {
                                 val username = dataSnapshot.child(name).child("username").getValue(String::class.java)
                                 val email = dataSnapshot.child(name).child("email").getValue(String::class.java)
                                 val intent = Intent(applicationContext, MenuActivity::class.java)
-                                // Setelah pengguna berhasil login, Anda dapat menyimpan nama pengguna ke SharedPreferences.
+
+                                // menyimpan username dan email ke SharedPreferences.
                                 val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-                                sharedPreferences.edit().putString("username", name).apply()
-                                //mwnyimPn username dan email
-                                intent.putExtra("username", username)
-                                intent.putExtra("email", email)
+                                sharedPreferences.edit().putString("username", username).apply()
+                                sharedPreferences.edit().putString("email", email).apply()
                                 startActivity(intent)
                                 return
                             }
